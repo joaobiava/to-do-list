@@ -3,7 +3,7 @@
 @section('title', 'sign in')
 
 @section('body')
-    <form action="(( route('signin') ))" method="post">
+    <form action="{{ route('login') }}" method="post">
         @csrf
 
         <label for="email">email</label>
