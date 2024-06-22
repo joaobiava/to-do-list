@@ -9,15 +9,15 @@ class SignUpController extends Controller
 {
     public function signup(Request $request){
         $validated = $request->validate([
-            'name' => ['required', 'max:45'],
+            'name' => ['required', 'min:3','max:45'],
             'email' => ['required', 'max:50'],
             'cpf' => ['required', 'regex:([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2})'],
-            'birthDate' => ['required'],
-            'password' => ['required']
+            'birthDate' => ['required', 'after:01/01/1907', 'before:today'],
+            'password' => ['required', 'min:8' ,'max:50']
         ]);
 
         User::create($validated);
 
-        return redirect()->route('signin');
+        return redirect()->route('login');
     }
 }
