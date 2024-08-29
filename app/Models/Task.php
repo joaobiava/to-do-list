@@ -10,8 +10,14 @@ class Task extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'title',
         'description',
         'category',
+        'status',
     ];
+
+    public function user(){
+        return $this->hasOne(User::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +17,14 @@ class TaskController extends Controller
             'category' => ['required', 'min:3', 'max:50'],
         ]);
         
-        dd(Task::create($validated));
+        // dd(Auth::id());
+        Task::create([
+            'user_id' => Auth::id(),
+            'title' => $validated['title'],
+            'description' => $validated['description'],
+            'category' => $validated['category'],
+            'status' => false,
+        ]);
         //dd($validated);        
         // $task = new Task();
         // $task->title = $validated['title'];
@@ -35,5 +43,9 @@ class TaskController extends Controller
             ->get();
 
         dd($tasks);
+    }
+
+    public function getAllTasks(){
+        return User::find(Auth::id())->tasks;
     }
 }

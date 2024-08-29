@@ -15,5 +15,5 @@
         <input type="text" name="category">
 
         <button type="submit">Submit</button>
-    </form>
+    </label>
 @endsection

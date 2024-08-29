@@ -1,0 +1,66 @@
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Form container */
+form {
+    background-color: #fff;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form labels */
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Form inputs */
+form input[type="text"], input[type="password"], input[type="email"], input[type="date"]  {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+/* Input focus state */
+form input[type="text"], input[type="password"], input[type="email"], input[type="date"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Submit button */
+form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+/* Button hover state */
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Adding a nice transition effect to form elements */
+form input[type="text"], form button {
+    transition: all 0.3s ease-in-out;
+}
