@@ -10,6 +10,19 @@ use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
+
+    public function index()
+    {
+        $tasks = $this->getAllTasksByUser();
+
+        if ($tasks->isEmpty()) {
+            return view('home', ['tasks' => collect()]);
+        }
+
+        return view('home', ['tasks' => $tasks]);
+    }
+
+
     public function store(Request $request){
         $validated = $request->validate([
             'title' => ['required', 'min:3', 'max:50'],
@@ -17,7 +30,6 @@ class TaskController extends Controller
             'category' => ['required', 'min:3', 'max:50'],
         ]);
         
-        // dd(Auth::id());
         Task::create([
             'user_id' => Auth::id(),
             'title' => $validated['title'],
@@ -25,27 +37,35 @@ class TaskController extends Controller
             'category' => $validated['category'],
             'status' => false,
         ]);
-        //dd($validated);        
-        // $task = new Task();
-        // $task->title = $validated['title'];
-        // $task->description = $validated['description'];
-        // $task->category = $category['category'];
-        // $task->save();
 
         return redirect()->route('home');
     }
 
-    public function getAllTasksByUserId(){
+    public function getAllTasksByUser(){
         $user_id = Auth::id();
-        $tasks = DB::tables('tasks')
+        $tasks = DB::table('tasks')
             ->select()
             ->where('user_id', '=', $user_id)
             ->get();
-
-        dd($tasks);
+        return $tasks;
     }
 
     public function getAllTasks(){
-        return User::find(Auth::id())->tasks;
+        $tasks = User::find(Auth::id())->tasks;
+
+        return $tasks;
     }
+
+    public function deleteTask($id)
+    {
+        $task = Task::where('id', $id)->where('user_id', Auth::id())->first();
+
+        if ($task) {
+            $task->delete();
+            return redirect()->route('home')->with('success', 'Tarefa deletada com sucesso!');
+        }
+
+        return redirect()->route('home')->with('error', 'Tarefa não encontrada ou você não tem permissão para deletá-la.');
+    }
+
 }

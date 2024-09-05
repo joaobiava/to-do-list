@@ -3,6 +3,7 @@
 @section('title', 'Sign Up')
 
 @section('body')
+<link rel="stylesheet" href="css/signup.css">
     <form action="{{ route('signup') }}" method="post">
         @csrf
 

@@ -3,6 +3,7 @@
 @section('title', 'sign in')
 
 @section('body')
+<link rel="stylesheet" type="text/css" href="css/signin.css" media="screen" />
     <form action="{{ route('login') }}" method="post">
         @csrf
 

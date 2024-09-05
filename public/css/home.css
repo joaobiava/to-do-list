@@ -5,6 +5,11 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
+    /* Centralizar na vertical e na horizontal */
+    position: absolute;
+    top: 20%;
+    left: 37.5%;
+    margin: -25px 0 0 -25px;
 }
 
 /* Form container */
@@ -63,4 +68,38 @@ form button:hover {
 /* Adding a nice transition effect to form elements */
 form input[type="text"], form button {
     transition: all 0.3s ease-in-out;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+ul li strong {
+    font-size: 1.2em;
+}
+
+ul li em {
+    color: #777;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Mensagem de "sem tarefas" */
+p {
+    background-color: #ffdddd;
+    padding: 15px;
+    border: 1px solid #ff5c5c;
+    border-radius: 4px;
+    color: #900;
+    text-align: center;
 }
