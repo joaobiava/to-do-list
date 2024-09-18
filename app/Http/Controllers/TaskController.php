@@ -68,4 +68,23 @@ class TaskController extends Controller
         return redirect()->route('home')->with('error', 'Tarefa não encontrada ou você não tem permissão para deletá-la.');
     }
 
+    public function edit($id){
+        $task = Task::where('user_id', Auth::id())->findOrFail($id);
+        return view('tasks.edit', compact('task'));
+    }
+
+    // Update the task
+    public function update(Request $request, $id){
+        $validated = $request->validate([
+            'title' => ['required', 'min:3', 'max:50'],
+            'description' => ['required', 'min:3', 'max:255'],
+            'category' => ['required', 'min:3', 'max:50'],
+        ]);
+
+        $task = Task::where('user_id', Auth::id())->findOrFail($id);
+        $task->update($validated);
+
+        return redirect()->route('home')->with('success', 'Task updated successfully!');
+    }
+
 }

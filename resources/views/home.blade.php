@@ -33,6 +33,11 @@
                         @method('DELETE')
                         <button type="submit">DELETE</button>
                     </form>
+                    <form action="{{ route('tasks.update', $task->id) }}" method="POST">
+                        @csrf
+                        @method('POST')
+                        <button>Edit</button>
+                    </form>
                 </li>
             @endforeach
         </ul>
