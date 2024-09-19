@@ -3,26 +3,61 @@
 @section('title', 'Sign Up')
 
 @section('body')
-<link rel="stylesheet" href="css/signup.css">
-    <form action="{{ route('signup') }}" method="post">
-        @csrf
+<!-- Incluindo o CSS do Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        <label for="name">Name</label>
-        <input type="text" name="name">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Sign Up</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('signup') }}" method="post">
+                        @csrf
 
-        <label for="email">Email</label>
-        <input type="email" name="email">
+                        <!-- Campo Nome -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
 
+                        <!-- Campo Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
 
-        <label for="cpf">CPF</label>
-        <input type="text" name="cpf">
+                        <!-- Campo CPF -->
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input type="text" class="form-control" name="cpf" required>
+                        </div>
 
-        <label for="birthDate">Birth Date</label>
-        <input type="date" name="birthDate">
+                        <!-- Campo Data de Nascimento -->
+                        <div class="mb-3">
+                            <label for="birthDate" class="form-label">Birth Date</label>
+                            <input type="date" class="form-control" name="birthDate" required>
+                        </div>
 
-        <label for="password">Password</label>
-        <input type="password" name="password">
+                        <!-- Campo Senha -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="password" required>
+                        </div>
 
-        <button type="submit">Submit</button>
-    </form>
+                        <!-- Botão Submit -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Incluindo o JS do Bootstrap (opcional, apenas se necessário para componentes interativos) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 @endsection

@@ -32,5 +32,6 @@ Route::delete('/tasks/{id}', [TaskController::class, 'deleteTask'])->middleware(
 // Rota para listar todas as tarefas de um usuário
 Route::get('/tasks', [TaskController::class, 'getAllTasksByUser'])->middleware('auth');
 
-Route::get('/editTask', [TaskController::class, 'edit'])->name('tasks.edit')->middleware('auth');
-Route::post('/editTask', [TaskController::class, 'update'])->name('tasks.update')->middleware('auth');
+Route::get('/tasks/{id}/edit', [TaskController::class, 'edit'])->name('tasks.edit')->middleware('auth');
+
+Route::put('/tasks/{id}', [TaskController::class, 'update'])->name('tasks.update')->middleware('auth');
